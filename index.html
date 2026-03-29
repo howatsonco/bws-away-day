@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lunch+Learn+LeaveBehind: AI Tools, Tips & Tricks</title>
+<meta name="description" content="Interactive AI tools guide for creative agencies. BWS Agency Day Lunch & Learn, March 2026.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;font-size:17px}
+body{font-family:'Instrument Sans',system-ui,sans-serif;font-size:1.05rem;line-height:1.7;color:#333;background:#F5F0E8;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none}
+input{font:inherit;border:none;outline:none;background:none}
+ul,ol{list-style:none}
+strong{font-weight:700}
+
+:root{
+  --serif:'Instrument Serif',Georgia,serif;
+  --body:'Instrument Sans',system-ui,sans-serif;
+  --charcoal:#2B2B2B;
+  --coral:#FF5544;
+  --blue:#2979FF;
+  --lavender:#A8A0C8;
+  --green:#1DB954;
+  --orange:#FF7722;
+  --gold:#8A7A30;
+  --pink:#E8A0B0;
+  --cream:#F5F0E8;
+  --gray:#B8B8B8;
+  --red:#C41E3A;
+  --container:1060px;
+  --pad:clamp(24px,5vw,48px);
+}
+
+/* ── PROGRESS ── */
+#progressBar{position:fixed;top:0;left:0;right:0;height:2px;z-index:9999;background:var(--coral);transform-origin:left;transform:scaleX(0);pointer-events:none}
+
+/* ── NAV ── */
+.nav{position:fixed;top:2px;left:0;right:0;height:48px;z-index:9000;transform:translateY(-100%);transition:transform .4s cubic-bezier(.16,1,.3,1);background:var(--charcoal)}
+.nav.visible{transform:translateY(0)}
+.nav-inner{max-width:var(--container);margin:0 auto;padding:0 var(--pad);height:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--serif);font-size:.95rem;color:var(--cream)}
+.nav-links{display:none;gap:0;align-items:center}
+.nav-links a{padding:6px 10px;font-size:.78rem;font-weight:500;color:rgba(245,240,232,.55);transition:color .2s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:var(--cream)}
+.hamburger{display:flex;flex-direction:column;gap:5px;padding:8px}
+.hamburger span{display:block;width:18px;height:1.5px;background:var(--cream);transition:all .3s}
+.menu-open .hamburger span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.menu-open .hamburger span:nth-child(2){opacity:0}
+.menu-open .hamburger span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-nav{position:fixed;inset:0;z-index:8999;background:var(--charcoal);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;opacity:0;pointer-events:none;transition:opacity .3s}
+.menu-open .mobile-nav{opacity:1;pointer-events:all}
+.mobile-nav a{font-family:var(--serif);font-size:1.8rem;padding:6px 20px;color:var(--cream);transition:color .2s}
+.mobile-nav a:hover{color:var(--coral)}
+@media(min-width:900px){.nav-links{display:flex}.hamburger{display:none}}
+
+/* ── LAYOUT ── */
+.container{max-width:var(--container);margin:0 auto;padding:0 var(--pad)}
+.section-pad{padding:clamp(80px,12vw,160px) 0}
+.two-col{display:grid;grid-template-columns:1fr;gap:clamp(32px,5vw,64px);align-items:start}
+@media(min-width:768px){.two-col{grid-template-columns:1fr 1fr}}
+.divider{height:1px;background:rgba(0,0,0,.06);margin:0}
+
+/* ── TYPE SCALE ── */
+.t-hero{font-family:var(--serif);font-size:clamp(4rem, 3rem + 8vw, 10rem);line-height:.88;letter-spacing:-.03em}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.hero-title{width:100%;height:0;padding-bottom:72.16%;animation:none!important;transition:none!important;flex-shrink:0;flex-grow:0;background:url('jpg/27311a01608d7bd1cd3c1b4c4120def9.gif') center/cover;-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 941 679'%3E%3Cpath d='M104.526 646.327H133.417V678.428H71.7852V467.21H104.526V646.327ZM201.638 499.31H170.822V550.99H198.428V583.091H170.822V646.327H201.638V678.428H138.08V467.21H201.638V499.31ZM288.028 678.428H254.965L253.282 639.907H239.313L237.631 678.428H204.247L220.618 467.21H271.979L288.028 678.428ZM322.158 663.662L330.979 467.21H364.041L347.991 678.428H296.631L280.26 467.21H313.645L322.158 663.662ZM431.871 499.31H401.056V550.99H428.661V583.091H401.056V646.327H431.871V678.428H368.313V467.21H431.871V499.31ZM527.259 467.21C538.815 467.21 547.588 470.099 553.58 475.877C559.572 481.655 562.568 490.107 562.568 501.235V528.521C562.568 537.295 560.321 544.25 555.827 549.386C551.547 554.308 545.127 557.304 536.567 558.374C545.341 559.658 551.868 562.547 556.148 567.041C560.428 571.321 562.568 577.42 562.568 585.338V644.401C562.568 655.529 559.572 663.983 553.58 669.761C547.588 675.539 538.814 678.428 527.259 678.428H486.17V467.21H527.259ZM635.459 499.31H604.644V550.99H632.249V583.091H604.644V646.327H635.459V678.428H571.901V467.21H635.459V499.31ZM676.268 549.386H687.182V467.21H719.924V678.428H687.182V581.485H676.268V678.428H643.525V467.21H676.268V549.386ZM762.625 678.428H729.883V467.21H762.625V678.428ZM827.29 592.675L821.788 467.21H854.53V678.428H824.356L799.593 555.713L805.096 678.428H772.354V467.21H802.528L827.29 592.675ZM905.442 467.21C916.998 467.21 925.773 470.099 931.765 475.877C937.756 481.655 940.753 490.108 940.753 501.235V644.401C940.753 655.529 937.757 663.983 931.765 669.761C925.773 675.539 916.998 678.428 905.442 678.428H864.354V467.21H905.442ZM897.097 646.327H901.911C904.051 646.327 905.549 645.793 906.405 644.723C907.475 643.653 908.011 641.834 908.011 639.266V506.371C908.011 503.803 907.475 501.984 906.405 500.914C905.549 499.844 904.051 499.31 901.911 499.31H897.097V646.327ZM518.912 646.327H523.728C525.867 646.327 527.366 645.793 528.222 644.723C529.292 643.653 529.826 641.833 529.826 639.266V583.732C529.826 581.165 529.292 579.345 528.222 578.275C527.366 577.205 525.867 576.671 523.728 576.671H518.912V646.327ZM240.716 607.808H251.88L246.298 480.011L240.716 607.808ZM37.6816 559.066H59.9277V574.503H37.6816V596.749H22.2461V574.503H0V559.066H22.2461V536.82H37.6816V559.066ZM518.912 556.121C522.393 556.066 525.069 555.106 526.938 553.237C528.863 551.311 529.826 548.316 529.826 544.25V506.371C529.826 503.803 529.292 501.984 528.222 500.914C527.366 499.844 525.867 499.31 523.728 499.31H518.912V556.121ZM104.396 414.327H133.287V446.428H71.6553V235.21H104.396V414.327ZM201.508 267.31H170.692V318.99H198.298V351.091H170.692V414.327H201.508V446.428H137.95V235.21H201.508V267.31ZM287.898 446.428H254.835L253.152 407.907H239.184L237.501 446.428H204.117L220.488 235.21H271.849L287.898 446.428ZM331.332 235.21C343.316 235.21 352.518 238.205 358.938 244.197C365.358 249.975 368.568 258.321 368.568 269.235V318.67C368.568 327.23 366.642 334.505 362.79 340.497C360.1 344.927 356.591 348.653 352.264 351.68L375.951 446.428H342.567L326.116 360.52C325.717 360.567 325.316 360.612 324.912 360.654V446.428H292.171V235.21H331.332ZM433.15 360.675L427.648 235.21H460.391V446.428H430.217L405.454 323.714L410.957 446.428H378.215V235.21H408.389L433.15 360.675ZM240.586 375.808H251.75L246.168 248.011L240.586 375.808ZM37.7676 327.066H60.0137V342.503H37.7676V364.749H22.332V342.503H0.0859375V327.066H22.332V304.82H37.7676V327.066ZM324.912 330.537C327.4 330.476 329.433 330.052 331.012 329.263C332.724 328.407 333.9 327.122 334.542 325.41C335.398 323.698 335.826 321.452 335.826 318.67V274.371C335.826 271.803 335.292 269.984 334.222 268.914C333.366 267.844 331.975 267.31 330.049 267.31H324.912V330.537ZM169.899 179.438C169.899 181.364 170.328 182.863 171.184 183.933C172.254 185.003 173.645 185.537 175.356 185.537C177.068 185.537 178.353 185.003 179.209 183.933C180.279 182.863 180.813 181.364 180.813 179.438V3.20996H213.556V181.686C213.556 193.883 210.453 202.979 204.247 208.971C198.041 214.749 188.41 217.638 175.356 217.638C162.303 217.638 152.673 214.749 146.467 208.971C140.261 202.979 137.158 193.884 137.158 181.686V3.20996H169.899V179.438ZM352.461 0C365.515 1.4008e-05 375.145 2.99548 381.351 8.9873C387.557 14.7653 390.66 23.7533 390.66 35.9512V94.373H357.918V38.1982C357.918 36.2724 357.382 34.774 356.312 33.7041C355.457 32.6344 354.173 32.0996 352.461 32.0996C350.749 32.0996 349.358 32.6343 348.288 33.7041C347.432 34.774 347.004 36.2724 347.004 38.1982V179.438C347.004 181.364 347.432 182.863 348.288 183.933C349.358 185.003 350.749 185.537 352.461 185.537C354.173 185.537 355.457 185.002 356.312 183.933C357.383 182.863 357.918 181.364 357.918 179.438V127.115H390.66V181.686C390.66 193.884 387.557 202.979 381.351 208.971C375.145 214.749 365.515 217.638 352.461 217.638C339.407 217.638 329.777 214.748 323.571 208.971C317.365 202.979 314.262 193.884 314.262 181.686V35.9512C314.262 23.7533 317.365 14.7653 323.571 8.9873C329.777 2.99552 339.407 0 352.461 0ZM104.246 182.327H133.137V214.428H71.5049V3.20996H104.246V182.327ZM277.84 128.676L272.338 3.20996H305.079V214.428H274.905L250.143 91.7139L255.646 214.428H222.903V3.20996H253.077L277.84 128.676ZM432.75 85.3857H443.664V3.20996H476.405V214.428H443.664V117.485H432.75V214.428H400.008V3.20996H432.75V85.3857Z' fill='white'/%3E%3C/svg%3E");mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 941 679'%3E%3Cpath d='M104.526 646.327H133.417V678.428H71.7852V467.21H104.526V646.327ZM201.638 499.31H170.822V550.99H198.428V583.091H170.822V646.327H201.638V678.428H138.08V467.21H201.638V499.31ZM288.028 678.428H254.965L253.282 639.907H239.313L237.631 678.428H204.247L220.618 467.21H271.979L288.028 678.428ZM322.158 663.662L330.979 467.21H364.041L347.991 678.428H296.631L280.26 467.21H313.645L322.158 663.662ZM431.871 499.31H401.056V550.99H428.661V583.091H401.056V646.327H431.871V678.428H368.313V467.21H431.871V499.31ZM527.259 467.21C538.815 467.21 547.588 470.099 553.58 475.877C559.572 481.655 562.568 490.107 562.568 501.235V528.521C562.568 537.295 560.321 544.25 555.827 549.386C551.547 554.308 545.127 557.304 536.567 558.374C545.341 559.658 551.868 562.547 556.148 567.041C560.428 571.321 562.568 577.42 562.568 585.338V644.401C562.568 655.529 559.572 663.983 553.58 669.761C547.588 675.539 538.814 678.428 527.259 678.428H486.17V467.21H527.259ZM635.459 499.31H604.644V550.99H632.249V583.091H604.644V646.327H635.459V678.428H571.901V467.21H635.459V499.31ZM676.268 549.386H687.182V467.21H719.924V678.428H687.182V581.485H676.268V678.428H643.525V467.21H676.268V549.386ZM762.625 678.428H729.883V467.21H762.625V678.428ZM827.29 592.675L821.788 467.21H854.53V678.428H824.356L799.593 555.713L805.096 678.428H772.354V467.21H802.528L827.29 592.675ZM905.442 467.21C916.998 467.21 925.773 470.099 931.765 475.877C937.756 481.655 940.753 490.108 940.753 501.235V644.401C940.753 655.529 937.757 663.983 931.765 669.761C925.773 675.539 916.998 678.428 905.442 678.428H864.354V467.21H905.442ZM897.097 646.327H901.911C904.051 646.327 905.549 645.793 906.405 644.723C907.475 643.653 908.011 641.834 908.011 639.266V506.371C908.011 503.803 907.475 501.984 906.405 500.914C905.549 499.844 904.051 499.31 901.911 499.31H897.097V646.327ZM518.912 646.327H523.728C525.867 646.327 527.366 645.793 528.222 644.723C529.292 643.653 529.826 641.833 529.826 639.266V583.732C529.826 581.165 529.292 579.345 528.222 578.275C527.366 577.205 525.867 576.671 523.728 576.671H518.912V646.327ZM240.716 607.808H251.88L246.298 480.011L240.716 607.808ZM37.6816 559.066H59.9277V574.503H37.6816V596.749H22.2461V574.503H0V559.066H22.2461V536.82H37.6816V559.066ZM518.912 556.121C522.393 556.066 525.069 555.106 526.938 553.237C528.863 551.311 529.826 548.316 529.826 544.25V506.371C529.826 503.803 529.292 501.984 528.222 500.914C527.366 499.844 525.867 499.31 523.728 499.31H518.912V556.121ZM104.396 414.327H133.287V446.428H71.6553V235.21H104.396V414.327ZM201.508 267.31H170.692V318.99H198.298V351.091H170.692V414.327H201.508V446.428H137.95V235.21H201.508V267.31ZM287.898 446.428H254.835L253.152 407.907H239.184L237.501 446.428H204.117L220.488 235.21H271.849L287.898 446.428ZM331.332 235.21C343.316 235.21 352.518 238.205 358.938 244.197C365.358 249.975 368.568 258.321 368.568 269.235V318.67C368.568 327.23 366.642 334.505 362.79 340.497C360.1 344.927 356.591 348.653 352.264 351.68L375.951 446.428H342.567L326.116 360.52C325.717 360.567 325.316 360.612 324.912 360.654V446.428H292.171V235.21H331.332ZM433.15 360.675L427.648 235.21H460.391V446.428H430.217L405.454 323.714L410.957 446.428H378.215V235.21H408.389L433.15 360.675ZM240.586 375.808H251.75L246.168 248.011L240.586 375.808ZM37.7676 327.066H60.0137V342.503H37.7676V364.749H22.332V342.503H0.0859375V327.066H22.332V304.82H37.7676V327.066ZM324.912 330.537C327.4 330.476 329.433 330.052 331.012 329.263C332.724 328.407 333.9 327.122 334.542 325.41C335.398 323.698 335.826 321.452 335.826 318.67V274.371C335.826 271.803 335.292 269.984 334.222 268.914C333.366 267.844 331.975 267.31 330.049 267.31H324.912V330.537ZM169.899 179.438C169.899 181.364 170.328 182.863 171.184 183.933C172.254 185.003 173.645 185.537 175.356 185.537C177.068 185.537 178.353 185.003 179.209 183.933C180.279 182.863 180.813 181.364 180.813 179.438V3.20996H213.556V181.686C213.556 193.883 210.453 202.979 204.247 208.971C198.041 214.749 188.41 217.638 175.356 217.638C162.303 217.638 152.673 214.749 146.467 208.971C140.261 202.979 137.158 193.884 137.158 181.686V3.20996H169.899V179.438ZM352.461 0C365.515 1.4008e-05 375.145 2.99548 381.351 8.9873C387.557 14.7653 390.66 23.7533 390.66 35.9512V94.373H357.918V38.1982C357.918 36.2724 357.382 34.774 356.312 33.7041C355.457 32.6344 354.173 32.0996 352.461 32.0996C350.749 32.0996 349.358 32.6343 348.288 33.7041C347.432 34.774 347.004 36.2724 347.004 38.1982V179.438C347.004 181.364 347.432 182.863 348.288 183.933C349.358 185.003 350.749 185.537 352.461 185.537C354.173 185.537 355.457 185.002 356.312 183.933C357.383 182.863 357.918 181.364 357.918 179.438V127.115H390.66V181.686C390.66 193.884 387.557 202.979 381.351 208.971C375.145 214.749 365.515 217.638 352.461 217.638C339.407 217.638 329.777 214.748 323.571 208.971C317.365 202.979 314.262 193.884 314.262 181.686V35.9512C314.262 23.7533 317.365 14.7653 323.571 8.9873C329.777 2.99552 339.407 0 352.461 0ZM104.246 182.327H133.137V214.428H71.5049V3.20996H104.246V182.327ZM277.84 128.676L272.338 3.20996H305.079V214.428H274.905L250.143 91.7139L255.646 214.428H222.903V3.20996H253.077L277.84 128.676ZM432.75 85.3857H443.664V3.20996H476.405V214.428H443.664V117.485H432.75V214.428H400.008V3.20996H432.75V85.3857Z' fill='white'/%3E%3C/svg%3E");-webkit-mask-size:100% 100%;mask-size:100% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+.hero-typewriter-wrap{min-height:5.5em}
+.t-display{font-family:var(--serif);font-size:clamp(3rem, 2.15rem + 5.25vw, 6.5rem);line-height:.92;letter-spacing:-.025em}
+.t-heading{font-family:var(--serif);font-size:clamp(1.95rem, 1.5rem + 2.65vw, 3.75rem);line-height:.95;letter-spacing:-.02em}
+.t-sub{font-family:var(--serif);font-size:clamp(1.3rem, 1.08rem + 1.1vw, 1.95rem);line-height:1.2}
+.t-label{font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.45}
+.t-body{font-size:1.05rem;line-height:1.7}
+.t-small{font-size:.94rem;line-height:1.6}
+
+/* ── PROMPT QUOTE ── */
+.prompt-q{font-family:var(--serif);font-style:italic;font-size:clamp(1.08rem, 0.95rem + 0.55vw, 1.3rem);line-height:1.5;border-left:2px solid var(--coral);padding:12px 0 12px 20px;margin:20px 0;max-width:540px;color:var(--charcoal)}
+.prompt-q-dark{color:var(--cream);border-color:rgba(245,240,232,.2)}
+.copy-btn{display:inline-flex;align-items:center;gap:4px;padding:3px 0;font-size:.75rem;font-weight:600;color:inherit;opacity:.55;transition:opacity .2s;cursor:pointer;background:none;border:none;font-family:var(--body)}
+.copy-btn:hover{opacity:.85}
+.copy-btn.copied{opacity:1;color:var(--green)}
+.copy-btn svg{width:13px;height:13px}
+.copy-svg{viewBox:0 0 24 24;fill:none;stroke:currentColor;stroke-width:2}
+
+/* ── INTERACTIVE: CONTEXT METER ── */
+.meter-wrap{padding:clamp(28px,4vw,40px);background:var(--charcoal);border-radius:16px;color:var(--cream)}
+.meter-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.meter-pill{padding:7px 14px;border-radius:999px;font-size:.87rem;font-weight:600;border:1.5px solid rgba(245,240,232,.12);color:rgba(245,240,232,.5);transition:all .3s;cursor:pointer}
+.meter-pill.active{background:var(--coral);color:var(--cream);border-color:var(--coral)}
+.meter-bar{display:flex;gap:2px;margin-bottom:16px;height:5px;border-radius:2px;overflow:hidden}
+.meter-seg{flex:1;background:rgba(245,240,232,.06);border-radius:2px;transition:background .4s}
+.meter-seg.on{background:var(--coral)}
+.meter-out{font-size:.98rem;line-height:1.7;opacity:.7;min-height:50px;transition:opacity .3s}
+.meter-q{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;display:block;opacity:.8}
+
+/* ── INTERACTIVE: TECHNIQUE CARDS ── */
+.tech-card{background:var(--charcoal);border-radius:14px;margin-bottom:10px;overflow:hidden;color:var(--cream)}
+.tech-card summary{display:flex;align-items:center;gap:16px;padding:20px 24px;cursor:pointer;list-style:none;user-select:none;transition:background .15s}
+.tech-card summary:hover{background:rgba(255,255,255,.07)}
+.tech-card summary::-webkit-details-marker{display:none}
+.tech-card summary::marker{display:none;content:''}
+.tech-n{font-family:var(--serif);font-size:1.08rem;font-style:italic;color:var(--coral);flex-shrink:0;width:22px}
+.tech-t{font-family:var(--serif);font-size:clamp(1.08rem, 0.95rem + 0.55vw, 1.3rem);color:var(--cream)}
+.chev{flex-shrink:0;width:20px;height:20px;margin-left:auto;color:var(--cream);opacity:.35;transition:transform .3s,opacity .2s}
+.tech-card summary:hover .chev{opacity:.6}
+details[open] .chev{transform:rotate(180deg);opacity:.5}
+.tech-body{padding:0 24px 28px 62px;color:rgba(245,240,232,.7)}
+.tech-body p{margin-bottom:10px;font-size:.98rem}
+.tech-body ul{margin-bottom:12px}
+.tech-body li{position:relative;padding-left:12px;margin-bottom:5px;font-size:.95rem}
+.tech-body li::before{content:'';position:absolute;left:0;top:10px;width:3px;height:3px;border-radius:50%;background:var(--cream);opacity:.3}
+.tech-body strong{color:var(--cream)}
+.tech-body .prompt-q{color:var(--cream);border-color:rgba(245,240,232,.15)}
+.tech-body .copy-btn{color:rgba(245,240,232,.55)}
+.tech-body .score-btn{background:var(--coral)}
+
+/* ── SETUP CARDS ── */
+.setup-card{background:var(--cream);border-radius:14px;margin-bottom:8px;overflow:hidden;border:1px solid rgba(0,0,0,.06)}
+.setup-card summary{display:flex;align-items:center;gap:12px;padding:16px 20px;cursor:pointer;list-style:none;user-select:none;transition:background .15s}
+.setup-card summary:hover{background:rgba(0,0,0,.02)}
+.setup-card summary::-webkit-details-marker{display:none}
+.setup-card summary::marker{display:none;content:''}
+.setup-icon{flex-shrink:0;width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:var(--cream)}
+.setup-name{font-weight:700;font-size:.94rem}
+.setup-card .chev{color:var(--charcoal)}
+.setup-body{padding:0 20px 20px 60px;color:rgba(43,43,43,.75)}
+.setup-steps{list-style:none;counter-reset:step;margin:0;padding:0}
+.setup-steps li{position:relative;padding-left:24px;margin-bottom:6px;font-size:.94rem;line-height:1.6}
+.setup-steps li::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:1px;font-family:var(--serif);font-style:italic;font-size:.85rem;color:var(--coral);opacity:.7}
+@media(max-width:767px){.setup-body{padding-left:20px}}
+
+/* ── INTERACTIVE: PROMPT BUILDER ── */
+
+/* ── INTERACTIVE: SCORE ── */
+.score-btn{padding:8px 20px;border-radius:999px;background:var(--red);color:var(--cream);font-size:.87rem;font-weight:600;transition:opacity .2s}
+.score-btn:hover{opacity:.85}
+.score-out{margin-top:12px;min-height:50px}
+.score-num{font-family:var(--serif);font-size:2rem;font-style:italic;color:var(--red);line-height:1}
+.score-crit{font-size:.94rem;opacity:.55;margin-top:6px;font-style:italic}
+
+/* ── WAVEFORM ── */
+.wf{display:inline-flex;align-items:flex-end;gap:2px;height:14px;margin-left:8px;vertical-align:middle}
+.wf span{width:2px;background:currentColor;border-radius:1px;opacity:.2}
+.wf span:nth-child(1){animation:wv .8s ease-in-out infinite alternate;height:5px}
+.wf span:nth-child(2){animation:wv .6s ease-in-out infinite alternate .1s;height:11px}
+.wf span:nth-child(3){animation:wv .9s ease-in-out infinite alternate .2s;height:7px}
+.wf span:nth-child(4){animation:wv .5s ease-in-out infinite alternate .05s;height:13px}
+.wf span:nth-child(5){animation:wv .7s ease-in-out infinite alternate .15s;height:9px}
+@keyframes wv{0%{transform:scaleY(.3)}100%{transform:scaleY(1)}}
+
+/* ── INTERACTIVE: WIZARD ── */
+.wiz{padding:clamp(20px,3.5vw,30px);background:var(--charcoal);border-radius:16px;color:var(--cream);font-size:.88rem}
+.wiz .t-sub{font-size:clamp(1.1rem, 0.9rem + 0.8vw, 1.5rem)}
+.wiz .t-small{font-size:.82rem}
+.wiz-label{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.5);margin-bottom:6px}
+.wiz-input{width:100%;padding:6px 0;border-bottom:1.5px solid rgba(245,240,232,.08);color:var(--cream);font-size:.88rem;transition:border-color .2s;background:transparent}
+.wiz-input:focus{border-color:rgba(245,240,232,.3)}
+.wiz-input::placeholder{color:rgba(245,240,232,.4)}
+.wiz-tags{display:flex;flex-wrap:wrap;gap:6px}
+.wiz-tag{padding:5px 10px;border-radius:999px;font-size:.76rem;font-weight:600;border:1.5px solid rgba(245,240,232,.1);color:rgba(245,240,232,.5);cursor:pointer;transition:all .2s}
+.wiz-tag.on{border-color:rgba(245,240,232,.4);color:var(--cream)}
+.wiz-toggles{display:flex;flex-wrap:wrap;gap:6px}
+.wiz-tog{padding:5px 10px;border-radius:999px;font-size:.76rem;font-weight:600;cursor:pointer;border:1.5px solid rgba(245,240,232,.1);color:rgba(245,240,232,.5);transition:all .2s}
+.wiz-tog.on{border-color:rgba(245,240,232,.4);color:var(--cream)}
+.wiz-preview{margin-top:14px;padding:14px;border-radius:8px;background:rgba(0,0,0,.2);color:rgba(245,240,232,.65);font-size:.8rem;line-height:1.65;white-space:pre-wrap;min-height:50px}
+.wiz-step{margin-bottom:16px}
+
+/* ── (layers removed) ── */
+
+/* ── STATS ── */
+.stat-panel{display:flex;align-items:center;justify-content:center;flex-direction:column;padding:clamp(80px,12vw,160px) 20px;text-align:center}
+.stat-num{font-family:var(--serif);font-size:clamp(5rem, 4rem + 8vw, 14rem);line-height:.85;font-style:italic;transition:transform .3s}
+.stat-num.pulse{animation:sp .3s ease}
+@keyframes sp{50%{transform:scale(1.02)}100%{transform:scale(1)}}
+.stat-sub{font-size:.98rem;margin-top:12px;opacity:0;transform:translateY(8px);transition:all .6s cubic-bezier(.16,1,.3,1)}
+.stat-sub.show{opacity:.85;transform:translateY(0)}
+
+/* ── QUOTE ── */
+.quote-panel{display:flex;align-items:center;justify-content:center;padding:clamp(80px,12vw,160px) 20px;text-align:center}
+.quote-inner{max-width:680px;display:flex;flex-direction:column;align-items:center;gap:clamp(20px,3vw,32px)}
+.quote-portrait{width:clamp(100px,14vw,160px);height:clamp(100px,14vw,160px);border-radius:50%;overflow:hidden;border:3px solid rgba(245,240,232,.3)}
+.quote-text{font-family:var(--serif);font-size:clamp(1.5rem,1.28rem + 1.6vw,2.6rem);line-height:1.35;font-style:italic;margin:0;position:relative}
+.quote-mark{font-size:1.2em;opacity:.5}
+.quote-attr{font-size:.94rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.5;margin-top:4px}
+
+/* ── IDEA GEN ── */
+.idea-btn{padding:8px 20px;border-radius:999px;background:var(--coral);color:var(--cream);font-size:.87rem;font-weight:600;transition:opacity .2s}
+.idea-btn:hover{opacity:.85}
+.idea-out{margin-top:20px;font-family:var(--serif);font-size:clamp(1.2rem, 1rem + 1vw, 1.8rem);font-style:italic;line-height:1.3;opacity:.6;min-height:50px;transition:opacity .3s,transform .3s}
+.idea-out.swap{opacity:0;transform:translateY(6px)}
+
+/* ── TOOL GRID ── */
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:0;border-radius:12px;overflow:hidden}
+.tool-card{display:flex;align-items:flex-start;gap:12px;padding:16px;background:var(--cream);transition:background .2s,transform .2s;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.06)}
+.tool-card:hover{background:#eee8dc;transform:translateY(-2px)}
+.tool-card.hide{display:none}
+.tool-ic{flex-shrink:0;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:var(--cream)}
+.tool-name{font-weight:700;font-size:.94rem;margin-bottom:1px}
+.tool-desc{font-size:.84rem;opacity:.55;line-height:1.4}
+.tool-url{font-size:.77rem;font-weight:600;opacity:.5;margin-top:3px}
+.f-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:20px}
+.f-pill{padding:6px 12px;border-radius:999px;font-size:.84rem;font-weight:600;border:1.5px solid rgba(0,0,0,.1);opacity:.45;cursor:pointer;transition:all .2s}
+.f-pill:hover{opacity:.7}
+.f-pill.on{background:var(--charcoal);color:var(--cream);border-color:var(--charcoal);opacity:1}
+
+/* ── MODELS ── */
+.m-pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:20px}
+.m-pill{padding:6px 12px;border-radius:999px;font-size:.84rem;font-weight:600;border:1.5px solid rgba(0,0,0,.06);opacity:.45;cursor:pointer;transition:all .2s}
+.m-pill:hover{opacity:.65}
+.m-pill.on{background:var(--charcoal);color:var(--cream);border-color:var(--charcoal);opacity:1}
+.m-cards{display:grid;grid-template-columns:1fr;gap:1px;background:rgba(0,0,0,.04);border-radius:12px;overflow:hidden}
+@media(min-width:768px){.m-cards{grid-template-columns:repeat(3,1fr)}}
+.m-card{padding:20px;background:var(--cream);transition:all .3s}
+.m-card.rec{background:#fff;border-top:3px solid var(--coral)}
+.m-card.dim{opacity:.35}
+.m-card h4{font-family:var(--serif);font-size:1.18rem;margin-bottom:4px}
+.m-card.rec h4{color:var(--coral)}
+.m-card p{font-size:.9rem;opacity:.6;line-height:1.5}
+
+/* ── HABITS ── */
+.h-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.04);cursor:pointer}
+.h-item:last-child{border-bottom:none}
+.h-box{flex-shrink:0;width:20px;height:20px;border-radius:5px;border:1.5px solid rgba(0,0,0,.2);display:flex;align-items:center;justify-content:center;transition:all .2s;margin-top:2px}
+.h-item:hover .h-box{border-color:rgba(0,0,0,.3)}
+.h-item.ck .h-box{background:var(--coral);border-color:var(--coral)}
+.h-item.ck .h-box svg{opacity:1}
+.h-box svg{width:11px;height:11px;opacity:0;transition:opacity .2s}
+.h-count{font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--coral);opacity:.5;margin-bottom:8px}
+.boring-in{width:100%;padding:8px 0;border-bottom:1.5px solid rgba(245,240,232,.08);font-size:1rem;color:var(--cream);transition:border-color .2s;background:transparent}
+.boring-in:focus{border-color:var(--coral)}
+.boring-in::placeholder{color:rgba(245,240,232,.3)}
+.boring-out{margin-top:12px;font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--cream);opacity:0;max-height:0;overflow:hidden;transition:all .3s;line-height:1.5}
+.boring-out.show{opacity:.65;max-height:200px}
+
+/* ── PRINCIPLES ── */
+.prin-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:clamp(24px,4vw,40px)}
+.prin-card{background:rgba(245,240,232,.04);border-radius:14px;padding:clamp(20px,2.5vw,28px);transition:background .2s}
+.prin-n{font-family:var(--serif);font-size:clamp(1.4rem, 1.2rem + 1vw, 2rem);font-style:italic;color:var(--coral);opacity:1;margin-bottom:10px;display:block;line-height:1}
+.prin-title{font-family:var(--serif);font-size:clamp(1.1rem, 1rem + 0.5vw, 1.4rem);color:var(--cream);line-height:1.2;margin-bottom:6px}
+.prin-sub{font-size:.92rem;line-height:1.6;color:rgba(245,240,232,.55)}
+.prin-card:hover{background:rgba(245,240,232,.08)}
+
+/* ── ACTION PLAN ── */
+.act-plan{margin-top:40px;padding:clamp(20px,3vw,32px);border-radius:12px;background:rgba(0,0,0,.15);max-width:440px;margin-left:auto;margin-right:auto;text-align:left}
+.act-plan h3{font-family:var(--serif);font-size:1rem;margin-bottom:12px}
+.act-step{display:flex;gap:8px;align-items:baseline;padding:4px 0;font-size:.94rem;opacity:.7}
+.act-n{font-family:var(--serif);font-style:italic;font-size:.95rem;flex-shrink:0;opacity:.5}
+
+/* ── EMAIL ── */
+.email-link{font-weight:600;position:relative;display:inline-block}
+.email-link::after{content:'';position:absolute;bottom:-2px;left:50%;right:50%;height:1px;background:currentColor;transition:left .3s,right .3s}
+.email-link:hover::after{left:0;right:0}
+
+/* ── PLATFORM GRID ── */
+.plat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:rgba(245,240,232,.06);border-radius:12px;overflow:hidden;margin-top:20px}
+.plat-card{display:block;padding:16px;background:var(--charcoal);transition:background .2s}
+.plat-card:hover{background:#222}
+.plat-card h4{font-family:var(--serif);font-size:1.02rem;color:var(--cream)}
+.plat-card p{font-size:.84rem;color:var(--cream);opacity:.45;margin-top:3px;line-height:1.3}
+.plat-card .arrow{font-size:.8rem;color:var(--coral);margin-top:8px;font-weight:600;display:inline-block;transition:transform .2s}
+.plat-card:hover .arrow{transform:translateX(3px)}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.vis{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}
+.r-cascade{opacity:0;transform:translateX(-16px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
+.r-cascade.vis{opacity:1;transform:translateX(0)}
+
+/* ── CLOSING ANIM ── */
+.cl-hl{letter-spacing:-.05em;transition:letter-spacing .8s cubic-bezier(.16,1,.3,1)}
+.cl-hl.on{letter-spacing:-.03em}
+
+/* ── SCROLL HINT ── */
+.scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);opacity:.35;animation:scrollBounce 2s ease-in-out infinite}
+.scroll-hint svg{width:20px;height:20px;color:var(--cream)}
+@keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+/* ── UTILS ── */
+.mt-xs{margin-top:6px}.mt-sm{margin-top:14px}.mt-md{margin-top:28px}.mt-lg{margin-top:48px}.mt-xl{margin-top:72px}
+.mb-sm{margin-bottom:14px}.mb-md{margin-bottom:28px}
+.max-w{max-width:560px}
+.bg-dark{background:var(--charcoal);color:var(--cream)}
+.bg-cream{background:var(--cream);color:var(--charcoal)}
+@media(max-width:767px){.tech-body{padding-left:20px}.prin-grid{grid-template-columns:1fr}}
+
+/* ── PRINT ── */
+@media print{
+  .nav,.mobile-nav,.copy-btn,#progressBar,.meter-pills,.score-btn,.score-out,.idea-btn,.idea-out,.f-pills,.m-pills,.wiz,.boring-in,.boring-out,.h-box,.act-plan,.ba-toggle,.hamburger,.mobile-nav{display:none!important}
+  .reveal,.r-cascade{opacity:1!important;transform:none!important}
+  details{display:block!important}details>.tech-body{display:block!important}details>.setup-body{display:block!important}
+  body{color:#000;background:#fff;font-size:10pt}
+  .bg-dark{background:#fff!important;color:#000!important}
+  .stat-sub{opacity:.5!important;transform:none!important}
+  .m-card{opacity:1!important}
+  .hero-title{display:none!important}
+  .sr-only{position:static!important;width:auto!important;height:auto!important;clip:auto!important;white-space:normal!important;overflow:visible!important;margin:0!important}
+}
+</style>
+</head>
+<body>
+
+<div id="progressBar"></div>
+<nav class="nav" id="mainNav"><div class="nav-inner"><div class="nav-logo">Lunch+Learn+LeaveBehind</div><div class="nav-links" id="navLinks"><a href="#mindset">Mindset</a><a href="#prompting">Prompting</a><a href="#setup">Setup</a><a href="#projects">Projects</a><a href="#stats">Impact</a><a href="#build">Build</a><a href="#toolkit">Toolkit</a><a href="#habits">Habits</a><a href="#principles">Principles</a></div><button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span></span><span></span><span></span></button></div></nav>
+<div class="mobile-nav" id="mobileNav"><a href="#mindset">Mindset</a><a href="#prompting">Prompting</a><a href="#setup">Setup</a><a href="#projects">Projects</a><a href="#stats">Impact</a><a href="#build">Build</a><a href="#toolkit">Toolkit</a><a href="#habits">Habits</a><a href="#principles">Principles</a></div>
+
+<!-- ═══ HERO ═══ -->
+<section class="bg-dark" style="min-height:100vh;padding-top:0;position:relative">
+  <div style="display:flex;justify-content:space-between;padding:16px var(--pad);font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.4)">
+    <span>Lunch+Learn</span><span>BWS+Agency</span><span>Howatson+Company</span>
+  </div>
+  <div class="container" style="padding-top:clamp(80px, 12vh, 160px);padding-bottom:clamp(60px, 8vh, 120px)">
+    <h1 class="sr-only">Lunch+Learn+LeaveBehind</h1>
+    <div class="hero-title" role="img" aria-label="Lunch+Learn+LeaveBehind"></div>
+    <p class="reveal reveal-d1" style="font-family:var(--serif);font-size:clamp(1.1rem, 1rem + 0.8vw, 1.6rem);color:var(--cream);opacity:.45;margin-top:12px;padding-left:7.63%">AI Tools, Tips &amp; Tricks</p>
+    <div class="hero-typewriter-wrap">
+      <p class="reveal reveal-d2 mt-sm max-w t-body" style="color:var(--cream);opacity:.55;padding-left:7.63%" id="heroTypewriter"><span id="typewriterText"></span><span id="typewriterCursor" style="display:inline-block;width:1.5px;height:1em;background:var(--cream);margin-left:1px;vertical-align:text-bottom;animation:blink .8s step-end infinite"></span></p>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+</section>
+
+<!-- ═══ MINDSET ═══ -->
+<section class="section-pad" id="mindset" style="scroll-margin-top:70px">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <p class="t-label reveal">01</p>
+        <h2 class="t-display reveal reveal-d1 mt-xs">The smartest<br>intern you<br>ever had.</h2>
+        <p class="t-body reveal reveal-d2 mt-md max-w" style="opacity:.55">AI knows everything on the internet &mdash; and <strong>nothing about you</strong>. Most people use it like Google, get generic answers, and give up. The fix is context.</p>
+      </div>
+      <div class="reveal reveal-d2">
+        <div class="meter-wrap" id="contextMeter">
+          <p style="font-family:var(--serif);font-size:1.1rem;margin-bottom:16px">Try it &mdash; add context:</p>
+          <div class="meter-pills">
+            <button class="meter-pill active" data-level="0">No context</button>
+            <button class="meter-pill" data-level="1">+ Role</button>
+            <button class="meter-pill" data-level="2">+ Brand</button>
+            <button class="meter-pill" data-level="3">+ Examples</button>
+          </div>
+          <div class="meter-bar"><div class="meter-seg on"></div><div class="meter-seg"></div><div class="meter-seg"></div><div class="meter-seg"></div></div>
+          <div class="meter-out" id="meterOut">
+            <span class="meter-q" id="meterQ" style="color:var(--coral)">Generic</span>
+            <span id="meterT">"Here's a marketing strategy for your brand. Focus on social media engagement, create compelling content, and leverage influencer partnerships."</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ PROMPTING ═══ -->
+<section class="section-pad" id="prompting" style="scroll-margin-top:70px">
+  <div class="container">
+    <p class="t-label reveal">02</p>
+    <h2 class="t-heading reveal reveal-d1 mt-xs">Six techniques that<br>change everything.</h2>
+    <div style="display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:24px;margin-bottom:8px" class="reveal reveal-d2">
+      <span style="font-size:.75rem;opacity:.3;display:none" class="kbd-h">Press 1&ndash;6</span>
+      <button class="toggle-all-btn" id="togAll" style="font-size:.78rem;font-weight:600;opacity:.4;transition:opacity .2s;margin-left:auto">Expand all</button>
+    </div>
+
+    <details class="tech-card reveal" id="card1"><summary><span class="tech-n">a</span><span class="tech-t">Ask the AI to ask you questions</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="tech-body">
+        <p>Flip the prompt. Give the AI your goal, let it extract what it needs.</p>
+        <div class="prompt-q">&ldquo;I want to achieve <strong>[your goal]</strong>. Ask me questions until you're confident you can answer me to the best of your ability.&rdquo;</div>
+        <button class="copy-btn" id="pbCopy" onclick="copyP(this,`I want to achieve [your goal]. Ask me questions until you're confident you can answer me to the best of your ability.`)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy prompt</span></button>
+        <ul class="mt-sm"><li><strong>One by one is best</strong> &mdash; each question compounds</li><li><strong>In a rush?</strong> Answer all at once &mdash; still much better</li></ul>
+      </div>
+    </details>
+
+    <details class="tech-card reveal" id="card2"><summary><span class="tech-n">b</span><span class="tech-t">Give it constraints</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="tech-body">
+        <p>Format, tone, length, what to avoid, the problem you're solving.</p>
+        <div class="prompt-q">&ldquo;This is what I want to do. I don't know how, but these are the things I need to hit. How can we do this?&rdquo;</div>
+        <button class="copy-btn" onclick="copyP(this,`This is what I want to do. I don't know how to do it, but these are the things I need to hit. How can we do this?`)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy prompt</span></button>
+      </div>
+    </details>
+
+    <details class="tech-card reveal" id="card3"><summary><span class="tech-n">c</span><span class="tech-t">Give it examples</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="tech-body">
+        <ul><li>Past campaigns, work you admire, multiple is better than one</li><li><strong>No examples?</strong> Ask AI to generate a bad one as a &ldquo;don't do this&rdquo; reference</li></ul>
+        <div class="prompt-q">&ldquo;This is what I want it to be like.&rdquo;</div>
+        <button class="copy-btn" onclick="copyP(this,`This is what I want it to be like.`)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy prompt</span></button>
+      </div>
+    </details>
+
+    <details class="tech-card reveal" id="card4"><summary><span class="tech-n">d</span><span class="tech-t">Use thinking / reasoning mode</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="tech-body"><p><strong>Always.</strong> The model reasons internally before answering. Available in Gemini (toggle), Claude (extended thinking), ChatGPT (reasoning).</p></div>
+    </details>
+
+    <details class="tech-card reveal" id="card5"><summary><span class="tech-n">e</span><span class="tech-t">Brutal self-review</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="tech-body">
+        <div class="prompt-q">&ldquo;Now review what you just wrote. Be brutally honest. Channel a cold war era Russian Olympic judge. Score it and why?&rdquo;</div>
+        <button class="copy-btn" onclick="copyP(this,`Now review what you just wrote. Be brutally honest. Channel a cold war era Russian Olympic judge. What would you score it and why?`)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy prompt</span></button>
+        <div class="mt-sm"><button class="score-btn" id="scoreBtn">Get your score</button><div class="score-out" id="scoreOut"></div></div>
+        <ul class="mt-sm"><li><strong>Cross-model critique:</strong> Paste Claude's output into ChatGPT &mdash; they recognise each other</li></ul>
+      </div>
+    </details>
+
+    <details class="tech-card reveal" id="card6"><summary><span class="tech-n">f</span><span class="tech-t">Voice input <span class="wf"><span></span><span></span><span></span><span></span><span></span></span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+      <div class="tech-body">
+        <p><strong>Talk to the model.</strong> You say 3x more than you'd type. Ramble, then ask it to structure your thoughts.</p>
+        <div class="prompt-q">&ldquo;Make sense of my ramblings.&rdquo;</div>
+        <button class="copy-btn" onclick="copyP(this,`Make sense of my ramblings.`)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy prompt</span></button>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ═══ STAT ═══ -->
+<section style="padding:0">
+  <div class="stat-panel reveal" style="background:#CC3E30;color:#FFD4CF">
+    <span class="stat-num counter" data-target="147312">0</span>
+    <span class="stat-sub">prompts that just said 'make it better' in the last five minutes</span>
+  </div>
+</section>
+
+<!-- ═══ CUSTOM INSTRUCTIONS ═══ -->
+<section class="section-pad" id="setup" style="scroll-margin-top:70px">
+  <div class="container">
+    <p class="t-label reveal">03</p>
+    <h2 class="t-display reveal reveal-d1 mt-xs">Custom<br>instructions.</h2>
+    <p class="t-body reveal reveal-d2 mt-md max-w" style="opacity:.55">The single most impactful step. Tell the AI who you are once, and every conversation gets better.</p>
+
+    <div class="two-col mt-lg">
+      <div class="reveal">
+        <p class="t-label mb-sm">How to set up</p>
+
+        <details class="setup-card" open>
+          <summary>
+            <span class="setup-icon" style="background:#4285F4">G</span>
+            <span class="setup-name">Gemini</span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;margin-left:auto;opacity:.25"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="setup-body">
+            <ol class="setup-steps">
+              <li>Settings (top right)</li>
+              <li>Extensions &amp; Preferences</li>
+              <li>Add your role, tone, and what you create</li>
+              <li>Save</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="setup-card">
+          <summary>
+            <span class="setup-icon" style="background:#D4734C">C</span>
+            <span class="setup-name">Claude</span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;margin-left:auto;opacity:.25"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="setup-body">
+            <ol class="setup-steps">
+              <li>Settings (bottom left)</li>
+              <li>Profile &rarr; Style Preferences</li>
+              <li>Add your role, industry, and how you like responses</li>
+              <li>Save</li>
+            </ol>
+          </div>
+        </details>
+
+        <details class="setup-card">
+          <summary>
+            <span class="setup-icon" style="background:#10A37F">C</span>
+            <span class="setup-name">ChatGPT</span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;margin-left:auto;opacity:.25"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="setup-body">
+            <ol class="setup-steps">
+              <li>Profile icon (top right) &rarr; Settings</li>
+              <li>Personalization &rarr; Custom Instructions</li>
+              <li>Fill in both boxes &mdash; who you are and how to respond</li>
+              <li>Save</li>
+            </ol>
+          </div>
+        </details>
+
+        <div class="mt-lg">
+          <p class="t-sub">Or let Gemini build it for you</p>
+          <p class="t-small mt-xs" style="opacity:.55">Paste this into Gemini. It'll interview you and write the real thing.</p>
+          <div style="margin-top:16px;padding:16px;border-radius:8px;background:rgba(0,0,0,.04);color:rgba(43,43,43,.7);font-size:.82rem;line-height:1.65;white-space:pre-wrap" id="geminiPrompt">I want you to help me build the perfect custom instructions for my AI tools. Interview me step by step &mdash; ask one question at a time, wait for my answer, then ask a follow-up before moving on.
+
+Cover these areas:
+1. My role, title, and what my day-to-day actually looks like
+2. The industry I work in and who I&rsquo;m usually creating work for
+3. The specific outputs I produce most often (decks, briefs, copy, strategies, etc.)
+4. My tone and voice preferences &mdash; how I naturally write vs. how I want AI to write
+5. Formatting preferences &mdash; bullets vs. paragraphs, length, structure
+6. Things that annoy me in AI output (e.g. buzzwords, emojis, hedging, filler intros)
+7. Examples: ask me to paste something I&rsquo;ve written that I like, and something an AI wrote that I hated &mdash; then ask me what specifically was wrong with it
+8. Any specific tools, frameworks, or terminology I use regularly
+9. How I want the AI to handle uncertainty &mdash; should it guess, ask, or flag assumptions?
+
+After the interview, synthesise everything into a single block of custom instructions I can paste directly into my AI settings. Make it specific, opinionated, and written in first person. No filler. No generic advice. It should sound like me briefing a new team member.</div>
+          <button class="copy-btn mt-xs" id="geminiCopy" onclick="copyGeminiPrompt()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy prompt</span></button>
+        </div>
+      </div>
+
+      <div class="reveal reveal-d1">
+        <div class="wiz" id="wizard">
+          <p class="t-sub" style="color:var(--cream)">Build yours now</p>
+          <p class="t-small mt-xs" style="opacity:.45">Fill in, copy, paste into your AI settings.</p>
+          <div class="wiz-step mt-md"><div class="wiz-label">Your role</div><input class="wiz-input" id="wizRole" type="text" placeholder="Brand Manager, Designer, Strategist..."></div>
+          <div class="wiz-step"><div class="wiz-label">Industry</div><div class="wiz-tags" id="wizIndustry"><button class="wiz-tag" data-ind="Advertising">Advertising</button><button class="wiz-tag" data-ind="Media">Media</button><button class="wiz-tag" data-ind="Retail">Retail</button><button class="wiz-tag" data-ind="Tech">Tech</button><button class="wiz-tag" data-ind="FMCG">FMCG</button><button class="wiz-tag" data-ind="Finance">Finance</button><button class="wiz-tag" data-ind="Healthcare">Health</button></div></div>
+          <div class="wiz-step"><div class="wiz-label">What you make</div><div class="wiz-tags" id="wizTags"><button class="wiz-tag" data-tag="Campaigns">Campaigns</button><button class="wiz-tag" data-tag="Social content">Social</button><button class="wiz-tag" data-tag="Strategies">Strategy</button><button class="wiz-tag" data-tag="Decks">Decks</button><button class="wiz-tag" data-tag="Briefs">Briefs</button><button class="wiz-tag" data-tag="Reports">Reports</button><button class="wiz-tag" data-tag="Copy">Copy</button><button class="wiz-tag" data-tag="Creative concepts">Concepts</button><button class="wiz-tag" data-tag="Media plans">Media plans</button><button class="wiz-tag" data-tag="Scripts">Scripts</button></div></div>
+          <div class="wiz-step"><div class="wiz-label">Response style</div><div class="wiz-toggles" id="wizTogs"><button class="wiz-tog on" data-toggle="length" data-a="Concise" data-b="Detailed">Concise</button><button class="wiz-tog on" data-toggle="tone" data-a="Casual" data-b="Formal">Casual</button><button class="wiz-tog" data-toggle="format" data-a="Paragraphs" data-b="Bullets">Paragraphs</button><button class="wiz-tog on" data-toggle="emoji" data-a="No emojis" data-b="Use emojis">No emojis</button></div></div>
+          <div class="wiz-step"><div class="wiz-label">Never do this</div><div class="wiz-tags" id="wizAvoid"><button class="wiz-tag" data-avoid="Use em dashes in body text">Em dashes</button><button class="wiz-tag" data-avoid="Use buzzwords or jargon">Buzzwords</button><button class="wiz-tag" data-avoid="Write long introductions">Long intros</button><button class="wiz-tag" data-avoid="Use passive voice">Passive voice</button><button class="wiz-tag" data-avoid="Repeat back my question">Repeat questions</button><button class="wiz-tag" data-avoid="Add disclaimers or caveats">Disclaimers</button></div></div>
+          <div class="wiz-preview" id="wizPrev">Fill in the fields above...</div>
+          <button class="copy-btn mt-xs" style="color:rgba(245,240,232,.55)" id="wizCopy" onclick="copyWiz()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy instructions</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ PROJECT ASSISTANTS ═══ -->
+<section class="section-pad" id="projects" style="scroll-margin-top:70px">
+  <div class="container">
+    <p class="t-label reveal">04</p>
+    <h2 class="t-heading reveal reveal-d1 mt-xs">Project-specific<br>assistants.</h2>
+    <p class="t-body reveal reveal-d2 mt-md max-w" style="opacity:.55">Same principles, scoped to a workflow. Upload examples, set instructions, and even lazy prompts produce on-brand output.</p>
+
+    <div class="two-col mt-lg">
+      <div class="reveal" style="padding:clamp(24px,3vw,32px);background:var(--charcoal);border-radius:14px;color:var(--cream)">
+        <p class="t-label" style="color:var(--coral);opacity:.6">Example 1</p>
+        <p class="t-sub mt-xs" style="color:var(--cream)">Image Prompt Generator</p>
+        <p class="t-small mt-sm" style="opacity:.55"><strong style="color:var(--cream)">Instructions:</strong> Rewrite text as detailed image generation prompts</p>
+        <p class="t-small mt-xs" style="opacity:.55"><strong style="color:var(--cream)">Knowledge:</strong> Prompt engineering docs uploaded</p>
+        <p class="t-small mt-sm" style="opacity:.6">Type &ldquo;cat in a hat&rdquo; &rarr; 6-paragraph cinematic prompt</p>
+      </div>
+      <div class="reveal reveal-d1" style="padding:clamp(24px,3vw,32px);background:var(--charcoal);border-radius:14px;color:var(--cream)">
+        <p class="t-label" style="color:var(--coral);opacity:.6">Example 2</p>
+        <p class="t-sub mt-xs" style="color:var(--cream)">Caption Writer</p>
+        <div style="display:flex;gap:0;margin:12px 0" id="capTog"><button class="active" data-mode="without" style="padding:6px 12px;font-size:.78rem;font-weight:600;color:var(--cream);opacity:.45;transition:all .2s;border-bottom:2px solid transparent">Without context</button><button data-mode="with" style="padding:6px 12px;font-size:.78rem;font-weight:600;color:var(--cream);opacity:.45;transition:all .2s;border-bottom:2px solid transparent">With context</button></div>
+        <p style="font-family:var(--serif);font-style:italic;font-size:.95rem;line-height:1.6;color:var(--cream);opacity:.55;min-height:40px;transition:opacity .3s" id="capTxt">"Check out our latest summer drinks collection! Perfect for any occasion. #drinks #summer"</p>
+        <p class="t-small mt-sm" style="color:var(--coral);font-weight:600;opacity:.7">The prompting matters less when the setup is strong.</p>
+      </div>
+    </div>
+
+    <div class="reveal mt-lg">
+      <p class="t-label mb-sm">How to set up</p>
+
+      <details class="setup-card" open>
+        <summary>
+          <span class="setup-icon" style="background:#4285F4">G</span>
+          <span class="setup-name">Gemini &mdash; Gems</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;margin-left:auto;opacity:.25"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="setup-body">
+          <ol class="setup-steps">
+            <li>Gem manager (sidebar)</li>
+            <li>New Gem &mdash; name it</li>
+            <li>Write instructions &mdash; who it is, what it does, how it responds</li>
+            <li>Upload files &mdash; brand guides, tone docs, examples (up to 10)</li>
+            <li>Save</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="setup-card">
+        <summary>
+          <span class="setup-icon" style="background:#D4734C">C</span>
+          <span class="setup-name">Claude &mdash; Projects</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;margin-left:auto;opacity:.25"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="setup-body">
+          <ol class="setup-steps">
+            <li>Projects (sidebar) &rarr; Create project</li>
+            <li>Name it and write project instructions</li>
+            <li>Upload files</li>
+            <li>Start chatting &mdash; every conversation inherits the context</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="setup-card">
+        <summary>
+          <span class="setup-icon" style="background:#10A37F">C</span>
+          <span class="setup-name">ChatGPT &mdash; GPTs or Projects</span>
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;margin-left:auto;opacity:.25"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="setup-body">
+          <ol class="setup-steps">
+            <li><strong>GPTs:</strong> Explore GPTs &rarr; Create &mdash; add instructions + files. Shareable.</li>
+            <li><strong>Projects:</strong> Projects sidebar &rarr; New Project &mdash; add instructions + files. Personal.</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ QUOTE ═══ -->
+<section id="quote-trent" style="padding:0">
+  <div class="quote-panel reveal" style="background:var(--orange);color:var(--cream)">
+    <div class="quote-inner">
+      <div class="quote-portrait">
+        <img src="jpg/practice-put-the-hours-in-old-man.jpg.jpg" alt="Trent Michael" style="width:180%;height:180%;object-fit:cover;object-position:center 7%;border-radius:50%;margin-left:-58%;margin-top:-5%">
+      </div>
+      <blockquote class="quote-text" style="color:var(--cream)">
+        <span class="quote-mark">&ldquo;</span>The only way to get good at this is to practice. Put the hours in. Use it every day — for the boring stuff, the weird ideas, the things you'd never normally try. That's where the magic starts.<span class="quote-mark">&rdquo;</span>
+      </blockquote>
+      <p class="quote-attr" style="color:var(--cream)">Trent Michael, 96</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BUILD ═══ -->
+<section class="section-pad bg-dark" id="build" style="scroll-margin-top:70px">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <p class="t-label reveal" style="color:var(--coral)">06</p>
+        <h2 class="t-display reveal reveal-d1 mt-xs" style="color:var(--cream)">Easier than<br>you think.</h2>
+        <p class="t-body reveal reveal-d2 mt-md max-w" style="color:var(--cream);opacity:.55">Built with <strong style="color:var(--cream)">zero coding experience</strong>. The AI writes the code. Deploying is the easy part.</p>
+        <div class="reveal mt-lg">
+          <button class="idea-btn" id="ideaBtn">Give me an idea</button>
+          <div class="idea-out" id="ideaOut"></div>
+        </div>
+      </div>
+      <div class="reveal reveal-d2">
+        <p class="t-label" style="color:rgba(245,240,232,.4)">Where to start</p>
+        <div class="plat-grid mt-sm">
+          <a href="https://claude.ai" target="_blank" class="plat-card"><h4>Claude Artifacts</h4><p>Quick tools in chat</p><span class="arrow">claude.ai &rarr;</span></a>
+          <a href="https://gemini.google.com" target="_blank" class="plat-card"><h4>Gemini Canvas</h4><p>Quick prototypes</p><p class="t-small" style="opacity:.55;margin-top:4px">Tools &rarr; Canvas</p><span class="arrow">gemini.google.com &rarr;</span></a>
+          <a href="https://lovable.dev" target="_blank" class="plat-card"><h4>Lovable</h4><p>No-code builder</p><span class="arrow">lovable.dev &rarr;</span></a>
+          <a href="https://aistudio.google.com" target="_blank" class="plat-card"><h4>AI Studio</h4><p>Beginner-friendly</p><span class="arrow">aistudio.google.com &rarr;</span></a>
+          <a href="https://claude.ai" target="_blank" class="plat-card"><h4>Claude Code</h4><p>Terminal assistant</p><span class="arrow">claude.ai &rarr;</span></a>
+          <a href="https://claude.ai" target="_blank" class="plat-card"><h4>Claude Cowork</h4><p>Computer automation</p><span class="arrow">claude.ai &rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STAT ═══ -->
+<section style="padding:0">
+  <div class="stat-panel reveal" style="background:#6B6225;color:#F0E6A8">
+    <span class="stat-num counter" data-target="26" data-duration="4000">0</span>
+    <span class="stat-sub">vietnamese salads smashed in the name of professional development</span>
+  </div>
+</section>
+
+<!-- ═══ TOOLKIT ═══ -->
+<section class="section-pad" id="toolkit" style="scroll-margin-top:70px">
+  <div class="container">
+    <p class="t-label reveal">07</p>
+    <h2 class="t-heading reveal reveal-d1 mt-xs">Worth<br>bookmarking.</h2>
+    <div class="f-pills reveal mt-lg" id="fPills"><button class="f-pill on" data-filter="all">All</button><button class="f-pill" data-filter="ai">AI Models</button><button class="f-pill" data-filter="productivity">Productivity</button><button class="f-pill" data-filter="building">Building</button><button class="f-pill" data-filter="deploy">Deploy</button></div>
+    <div class="tool-grid reveal" id="toolGrid">
+      <a href="https://granola.ai" target="_blank" class="tool-card" data-cat="productivity"><div class="tool-ic" style="background:#6B4C9A">G</div><div><div class="tool-name">Granola</div><div class="tool-desc">Meeting summaries, auto-generated</div><div class="tool-url">granola.ai</div></div></a>
+      <a href="https://claude.ai" target="_blank" class="tool-card" data-cat="ai"><div class="tool-ic" style="background:#D4734C">C</div><div><div class="tool-name">Claude</div><div class="tool-desc">Coding, writing, tool building</div><div class="tool-url">claude.ai</div></div></a>
+      <a href="https://gemini.google.com" target="_blank" class="tool-card" data-cat="ai"><div class="tool-ic" style="background:#4285F4">G</div><div><div class="tool-name">Gemini</div><div class="tool-desc">Visual reasoning, image analysis</div><div class="tool-url">gemini.google.com</div></div></a>
+      <a href="https://aistudio.google.com" target="_blank" class="tool-card" data-cat="building"><div class="tool-ic" style="background:#0F9D58">AI</div><div><div class="tool-name">AI Studio</div><div class="tool-desc">Beginner experimentation</div><div class="tool-url">aistudio.google.com</div></div></a>
+      <a href="https://notebooklm.google.com" target="_blank" class="tool-card" data-cat="productivity"><div class="tool-ic" style="background:#EA4335">N</div><div><div class="tool-name">NotebookLM</div><div class="tool-desc">PDFs, video, audio &rarr; reports</div><div class="tool-url">notebooklm.google.com</div></div></a>
+      <a href="https://lovable.dev" target="_blank" class="tool-card" data-cat="building"><div class="tool-ic" style="background:#E91E63">L</div><div><div class="tool-name">Lovable</div><div class="tool-desc">No-code app builder</div><div class="tool-url">lovable.dev</div></div></a>
+      <a href="https://vercel.com" target="_blank" class="tool-card" data-cat="deploy"><div class="tool-ic" style="background:#000">V</div><div><div class="tool-name">Vercel</div><div class="tool-desc">Deploy apps live</div><div class="tool-url">vercel.com</div></div></a>
+      <a href="https://cloudflare.com" target="_blank" class="tool-card" data-cat="deploy"><div class="tool-ic" style="background:#F48120">CF</div><div><div class="tool-name">Cloudflare</div><div class="tool-desc">Deploy apps live</div><div class="tool-url">cloudflare.com</div></div></a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ MODELS ═══ -->
+<section class="section-pad" id="models" style="scroll-margin-top:70px">
+  <div class="container">
+    <p class="t-label reveal">08</p>
+    <h2 class="t-heading reveal reveal-d1 mt-xs">Which model?</h2>
+    <p class="t-body reveal reveal-d2 mt-sm" style="opacity:.55">Click a use case:</p>
+    <div class="m-pills reveal mt-md" id="mPills"><button class="m-pill" data-uc="writing">Writing</button><button class="m-pill" data-uc="coding">Coding</button><button class="m-pill" data-uc="images">Images</button><button class="m-pill" data-uc="analysis">Analysis</button><button class="m-pill" data-uc="general">General</button></div>
+    <div class="m-cards reveal" id="mCards">
+      <div class="m-card" data-str="images,analysis"><h4>Gemini</h4><p>Best at visual reasoning. That's about it.</p></div>
+      <div class="m-card" data-str="writing,coding,analysis,general"><h4>Claude</h4><p>Preferred for coding, writing, tool-building, general work.</p></div>
+      <div class="m-card" data-str="writing,general"><h4>ChatGPT</h4><p>Good general purpose; useful as second opinion.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STAT ═══ -->
+<section style="padding:0">
+  <div class="stat-panel reveal" style="background:#7A7498;color:#E4E0F4">
+    <span class="stat-num counter" data-target="6847">0</span>
+    <span class="stat-sub">AI tools downloaded, opened once, and never spoken of again</span>
+  </div>
+</section>
+
+<!-- ═══ HABITS ═══ -->
+<section class="section-pad" id="habits" style="scroll-margin-top:70px">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <p class="t-label reveal">09</p>
+        <h2 class="t-display reveal reveal-d1 mt-xs">The hardest<br>part.</h2>
+        <p class="t-body reveal reveal-d2 mt-md" style="opacity:.65;max-width:400px">The trick isn't knowing the tools &mdash; it's making them impossible to ignore.</p>
+        <div class="reveal mt-md" style="max-width:420px">
+          <div class="h-count" id="hCount">0 of 5</div>
+          <div id="hList">
+            <div class="h-item" data-h="phone"><div class="h-box"><svg viewBox="0 0 24 24" fill="none" stroke="#F5F0E8" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div><span class="t-small"><strong>Phone:</strong> AI in the dock bar</span></div>
+            <div class="h-item" data-h="mac"><div class="h-box"><svg viewBox="0 0 24 24" fill="none" stroke="#F5F0E8" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div><span class="t-small"><strong>Mac:</strong> Auto-launch on startup</span></div>
+            <div class="h-item" data-h="browser"><div class="h-box"><svg viewBox="0 0 24 24" fill="none" stroke="#F5F0E8" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div><span class="t-small"><strong>Browser:</strong> AI as homepage</span></div>
+            <div class="h-item" data-h="physical"><div class="h-box"><svg viewBox="0 0 24 24" fill="none" stroke="#F5F0E8" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div><span class="t-small"><strong>Physical:</strong> Post-it on monitor</span></div>
+            <div class="h-item" data-h="personal"><div class="h-box"><svg viewBox="0 0 24 24" fill="none" stroke="#F5F0E8" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div><span class="t-small"><strong>Personal first:</strong> Cooking, travel, shopping &mdash; then work</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-d2">
+        <div style="padding:clamp(24px,4vw,36px);background:var(--charcoal);border-radius:16px;color:var(--cream)">
+          <p class="t-sub" style="color:var(--coral)">&ldquo;What do I hate doing?&rdquo;</p>
+          <p class="t-small mt-xs" style="opacity:.45">Type it. Get your first prompt.</p>
+          <input class="boring-in mt-md" id="boringIn" type="text" placeholder="Your most boring task...">
+          <div class="boring-out" id="boringOut"></div>
+          <button class="copy-btn mt-xs" style="color:var(--cream);display:none" id="boringCopy" onclick="copyBoring()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>Copy prompt</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STAT ═══ -->
+<section style="padding:0">
+  <div class="stat-panel reveal" style="background:#2A4A8A;color:#B8D4FF">
+    <span class="stat-num counter" data-target="53741">0</span>
+    <span class="stat-sub">agency decks about AI made entirely without AI</span>
+  </div>
+</section>
+
+<!-- ═══ PRINCIPLES ═══ -->
+<section class="section-pad bg-dark" id="principles" style="scroll-margin-top:70px">
+  <div class="container">
+    <p class="t-label reveal" style="color:var(--coral)">10</p>
+    <h2 class="t-heading reveal reveal-d1 mt-xs" style="color:var(--cream)">Remember these.</h2>
+    <div class="prin-grid">
+      <div class="prin-card r-cascade" data-p="0"><span class="prin-n">01</span><p class="prin-title">Garbage in, garbage out</p><p class="prin-sub">30 seconds of context saves 30 minutes of rework.</p></div>
+      <div class="prin-card r-cascade" data-p="1"><span class="prin-n">02</span><p class="prin-title">Setup &gt; prompt</p><p class="prin-sub">A configured project beats the cleverest prompt.</p></div>
+      <div class="prin-card r-cascade" data-p="2"><span class="prin-n">03</span><p class="prin-title">Easier than you think</p><p class="prin-sub">Describe it in English. AI writes the code.</p></div>
+      <div class="prin-card r-cascade" data-p="3"><span class="prin-n">04</span><p class="prin-title">Experiment relentlessly</p><p class="prin-sub">Use it daily. Fail fast. Iterate.</p></div>
+      <div class="prin-card r-cascade" data-p="4"><span class="prin-n">05</span><p class="prin-title">Voice &gt; typing</p><p class="prin-sub">You say 3x more when speaking. That transforms the output.</p></div>
+      <div class="prin-card r-cascade" data-p="5"><span class="prin-n">06</span><p class="prin-title">Your ideas, AI's speed</p><p class="prin-sub">Your thinking, taste, direction. It just moves faster.</p></div>
+      <div class="prin-card r-cascade" data-p="6"><span class="prin-n">07</span><p class="prin-title">Start personal</p><p class="prin-sub">Cooking, travel, shopping. The skills transfer to work.</p></div>
+      <div class="prin-card r-cascade" data-p="7"><span class="prin-n">08</span><p class="prin-title">Stay current</p><p class="prin-sub">The tools change. The skills stack. Start now.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CLOSING ═══ -->
+<section class="section-pad bg-dark" id="closing" style="min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;background:var(--green);color:var(--cream)">
+  <div class="container">
+    <h2 class="t-hero reveal cl-hl">Start with<br>what annoys<br>you.</h2>
+    <div class="act-plan reveal reveal-d1" id="actPlan"><h3>Your action plan</h3><div id="actSteps"><div class="act-step"><span class="act-n">1.</span><span>Set up custom instructions</span></div><div class="act-step"><span class="act-n">2.</span><span>Try &ldquo;Ask me questions&rdquo; on your next brief</span></div><div class="act-step"><span class="act-n">3.</span><span>Pick one boring task, hand it to AI</span></div></div></div>
+    <div class="reveal reveal-d2 mt-xl"><p style="font-family:var(--serif);opacity:.5">Questions?</p><p class="mt-xs"><a href="mailto:trent.michael@howatsonco.com.au" class="email-link">trent.michael@howatsonco.com.au</a></p></div>
+    <div style="display:flex;justify-content:center;gap:clamp(20px,4vw,40px);margin-top:clamp(40px,6vw,72px);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(245,240,232,.35)" class="reveal reveal-d3"><span>Lunch+Learn</span><span>BWS+Agency</span><span>Howatson+Company</span></div>
+  </div>
+</section>
+
+<script>
+(function(){
+'use strict';
+var S={wizRole:'',wizTags:[],wizTogs:{length:'Concise',tone:'Casual',format:'Paragraphs'},habits:[],boring:'',wizDone:false};
+try{var sv=localStorage.getItem('kh-h');if(sv)S.habits=JSON.parse(sv)}catch(e){}
+
+// Progress
+var pb=document.getElementById('progressBar');
+(function loop(){var h=document.documentElement.scrollHeight-window.innerHeight;pb.style.transform='scaleX('+(h>0?window.scrollY/h:0)+')';requestAnimationFrame(loop)})();
+
+// Nav
+var nav=document.getElementById('mainNav'),hero=document.querySelector('.bg-dark');
+window.addEventListener('scroll',function(){nav.classList.toggle('visible',window.scrollY>hero.offsetHeight-80)},{passive:true});
+var secs=document.querySelectorAll('[id]'),lks=document.querySelectorAll('.nav-links a,.mobile-nav a');
+var nObs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){var id=en.target.id;lks.forEach(function(l){l.classList.toggle('active',l.getAttribute('href')==='#'+id)})}})},{threshold:.15,rootMargin:'-80px 0px -50% 0px'});
+document.querySelectorAll('section[id],div[id="stats"]').forEach(function(s){nObs.observe(s)});
+document.querySelectorAll('.nav-links a,.mobile-nav a').forEach(function(l){l.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(l.getAttribute('href'));if(t)window.scrollTo({top:t.offsetTop-60,behavior:'smooth'});document.body.classList.remove('menu-open')})});
+document.getElementById('hamburgerBtn').addEventListener('click',function(){document.body.classList.toggle('menu-open')});
+
+// Reveal
+var rObs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('vis');rObs.unobserve(en.target)}})},{threshold:.06,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){rObs.observe(el)});
+var cObs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){var i=parseInt(en.target.dataset.p||0);setTimeout(function(){en.target.classList.add('vis')},i*100);cObs.unobserve(en.target)}})},{threshold:.1});
+document.querySelectorAll('.r-cascade').forEach(function(el){cObs.observe(el)});
+var clObs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('on');clObs.unobserve(en.target)}})},{threshold:.3});
+var clH=document.querySelector('.cl-hl');if(clH)clObs.observe(clH);
+
+// Typewriter
+var tt='The gap between time available and quality expected is widening every day. More channels, more deliverables, more content. AI doesn\'t eliminate the work, but it fundamentally changes how quickly you can get it done.';
+var tEl=document.getElementById('typewriterText'),tCur=document.getElementById('typewriterCursor'),tI=0;
+function tN(){if(tI<tt.length){tEl.textContent+=tt[tI];tI++;setTimeout(tN,18)}else setTimeout(function(){tCur.style.display='none'},1500)}
+setTimeout(tN,500);
+
+// Context meter
+var mD=[
+  {q:'Generic',c:'var(--coral)',t:'"Here\'s a marketing strategy for your brand. Focus on social media engagement, create compelling content, and leverage influencer partnerships."'},
+  {q:'Better',c:'var(--orange)',t:'"As a brand marketer at a retail company, focus on in-store promotions, loyalty integration, and seasonal campaigns for your target demographic."'},
+  {q:'Good',c:'#ECC94B',t:'"For BWS, lean into \'Refreshingly BWS\' and its cheeky tone. Your Gen Z audience responds to culturally relevant moments. Create reactive content around drinking occasions."'},
+  {q:'Excellent',c:'var(--green)',t:'"Here are five Instagram captions matching your top posts:\n1. \'Doof stick: packed. Esky: full. Ros\u00e9: obviously. Here For It.\'\n2. \'Your group chat said picnic. You heard bottle shop first.\'..."'}
+];
+document.querySelectorAll('.meter-pill').forEach(function(p){p.addEventListener('click',function(){var l=parseInt(p.dataset.level);document.querySelectorAll('.meter-pill').forEach(function(x,i){x.classList.toggle('active',i<=l)});document.querySelectorAll('.meter-seg').forEach(function(x,i){x.classList.toggle('on',i<=l)});var o=document.getElementById('meterOut');o.style.opacity='0';setTimeout(function(){document.getElementById('meterQ').textContent=mD[l].q;document.getElementById('meterQ').style.color=mD[l].c;document.getElementById('meterT').textContent=mD[l].t;o.style.opacity='1'},200)})});
+
+// Cards
+var cards=[1,2,3,4,5,6].map(function(n){return document.getElementById('card'+n)});
+var allE=false,tBtn=document.getElementById('togAll');
+tBtn.addEventListener('click',function(){allE=!allE;cards.forEach(function(c){c.open=allE});tBtn.textContent=allE?'Collapse all':'Expand all'});
+document.addEventListener('keydown',function(e){if(document.activeElement.tagName==='INPUT'||document.activeElement.tagName==='TEXTAREA')return;var n=parseInt(e.key);if(n>=1&&n<=6&&cards[n-1])cards[n-1].open=!cards[n-1].open;if(e.key==='Escape')document.querySelectorAll('details[open]').forEach(function(d){d.open=false})});
+if(window.innerWidth>=900)document.querySelector('.kbd-h').style.display='block';
+
+
+// Score
+var crits=['Derivative. Lacks conviction.','Technically competent. Emotionally bankrupt.','Energy of a form letter.','Adequate. Which means forgettable.','Structure is fine. Soul is missing.','I can smell the default settings.','Passable. Worst thing creative work can be.','Reads like it was written by committee.'];
+document.getElementById('scoreBtn').addEventListener('click',function(){var b=this;b.disabled=true;var f=Math.floor(Math.random()*4)+2,c=10,d=document.getElementById('scoreOut');var iv=setInterval(function(){d.innerHTML='<div class="score-num">'+c+'/10</div>';c--;if(c<f){clearInterval(iv);d.innerHTML='<div class="score-num">'+f+'/10</div><p class="score-crit">"'+crits[Math.floor(Math.random()*crits.length)]+'"</p>';b.disabled=false}},120)});
+
+// Wizard
+S.wizIndustry=[];S.wizAvoid=[];
+document.getElementById('wizRole').addEventListener('input',function(){S.wizRole=this.value;uWiz()});
+document.querySelectorAll('#wizTags .wiz-tag').forEach(function(t){t.addEventListener('click',function(){t.classList.toggle('on');var v=t.dataset.tag,i=S.wizTags.indexOf(v);if(i>-1)S.wizTags.splice(i,1);else S.wizTags.push(v);uWiz()})});
+document.querySelectorAll('#wizIndustry .wiz-tag').forEach(function(t){t.addEventListener('click',function(){t.classList.toggle('on');var v=t.dataset.ind,i=S.wizIndustry.indexOf(v);if(i>-1)S.wizIndustry.splice(i,1);else S.wizIndustry.push(v);uWiz()})});
+document.querySelectorAll('#wizAvoid .wiz-tag').forEach(function(t){t.addEventListener('click',function(){t.classList.toggle('on');var v=t.dataset.avoid,i=S.wizAvoid.indexOf(v);if(i>-1)S.wizAvoid.splice(i,1);else S.wizAvoid.push(v);uWiz()})});
+document.querySelectorAll('.wiz-tog').forEach(function(t){t.addEventListener('click',function(){t.classList.toggle('on');var k=t.dataset.toggle;S.wizTogs[k]=t.classList.contains('on')?t.dataset.a:t.dataset.b;t.textContent=S.wizTogs[k];uWiz()})});
+function uWiz(){
+  var r=S.wizRole||'[role]',t=S.wizTags.length?S.wizTags.join(', ').toLowerCase():'[outputs]';
+  var ind=S.wizIndustry.length?' in the '+S.wizIndustry.join(' / ').toLowerCase()+' industry':'';
+  var txt='I am a '+r+ind+'. I primarily create '+t+'.\n\nWhen responding:\n- Be '+S.wizTogs.length.toLowerCase()+' and '+S.wizTogs.tone.toLowerCase()+'\n- Use '+S.wizTogs.format.toLowerCase()+' for structure';
+  if(S.wizTogs.emoji==='No emojis') txt+='\n- Never use emojis';
+  txt+='\n- Focus on actionable, specific advice\n- Ask clarifying questions before assuming';
+  if(S.wizAvoid.length>0) txt+='\n\nNever:\n'+S.wizAvoid.map(function(a){return'- '+a}).join('\n');
+  document.getElementById('wizPrev').textContent=txt;
+  S.wizDone=(S.wizRole.length>0||S.wizTags.length>0);uAct();
+}
+
+// Caption toggle
+var capD={without:'"Check out our latest summer drinks collection! Perfect for any occasion. #drinks #summer"',with:'"Your pre\'s called. They want ros\u00e9 on the way. Pink season is open. Here For It. \ud83c\udf39"'};
+document.getElementById('capTog').querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){document.getElementById('capTog').querySelectorAll('button').forEach(function(x){x.classList.remove('active');x.style.opacity='.45';x.style.borderBottomColor='transparent'});b.classList.add('active');b.style.opacity='1';b.style.borderBottomColor='var(--cream)';var ct=document.getElementById('capTxt');ct.style.opacity='0';setTimeout(function(){ct.textContent=capD[b.dataset.mode];ct.style.opacity='.55'},200)})});
+
+// Counters
+var ctObs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){aCtr(en.target);ctObs.unobserve(en.target)}})},{threshold:.3});
+document.querySelectorAll('.counter').forEach(function(c){ctObs.observe(c)});
+function aCtr(el){var tg=parseInt(el.dataset.target),dur=parseInt(el.dataset.duration||2200),st=performance.now(),shown=false;function tk(now){var p=Math.min((now-st)/dur,1),e=1-Math.pow(1-p,4);el.textContent=Math.round(e*tg).toLocaleString();if(!shown&&p>=.75){shown=true;var lb=el.parentElement.querySelector('.stat-sub');if(lb)lb.classList.add('show')}if(p<1)requestAnimationFrame(tk);else el.classList.add('pulse')}requestAnimationFrame(tk)}
+
+// Idea gen
+var ideas=['A brand compliance checker','A brief quality scorer','A caption generator trained on your posts','A meeting notes formatter','A campaign asset resizer','A competitor audit tool','A content calendar builder','A tone of voice checker','A client report generator','A PR response drafter','A presentation builder','A brief template'];
+var iI=-1;document.getElementById('ideaBtn').addEventListener('click',function(){var d=document.getElementById('ideaOut');d.classList.add('swap');setTimeout(function(){iI=(iI+1)%ideas.length;d.textContent=ideas[iI];d.classList.remove('swap')},300)});
+
+// Filters
+document.querySelectorAll('.f-pill').forEach(function(p){p.addEventListener('click',function(){document.querySelectorAll('.f-pill').forEach(function(x){x.classList.remove('on')});p.classList.add('on');var f=p.dataset.filter;document.querySelectorAll('.tool-card').forEach(function(c){c.classList.toggle('hide',f!=='all'&&c.dataset.cat!==f)})})});
+
+// Models
+document.querySelectorAll('.m-pill').forEach(function(p){p.addEventListener('click',function(){var isA=p.classList.contains('on');document.querySelectorAll('.m-pill').forEach(function(x){x.classList.remove('on')});if(isA){document.querySelectorAll('.m-card').forEach(function(c){c.classList.remove('rec','dim')});return}p.classList.add('on');var u=p.dataset.uc;document.querySelectorAll('.m-card').forEach(function(c){var s=c.dataset.str.split(',');c.classList.toggle('rec',s.indexOf(u)>-1);c.classList.toggle('dim',s.indexOf(u)<0)})})});
+
+// Habits
+var hItems=document.querySelectorAll('.h-item');
+function uH(){hItems.forEach(function(i){i.classList.toggle('ck',S.habits.indexOf(i.dataset.h)>-1)});document.getElementById('hCount').textContent=S.habits.length+' of 5';uAct()}
+hItems.forEach(function(i){i.addEventListener('click',function(){var h=i.dataset.h,x=S.habits.indexOf(h);if(x>-1)S.habits.splice(x,1);else S.habits.push(h);try{localStorage.setItem('kh-h',JSON.stringify(S.habits))}catch(e){}uH()})});
+uH();
+
+// Boring
+document.getElementById('boringIn').addEventListener('input',function(){S.boring=this.value;var p=document.getElementById('boringOut'),b=document.getElementById('boringCopy');if(this.value.length>0){p.textContent='\u201cHere\u2019s a task I hate: '+this.value+'. How can you help me automate it?\u201d';p.classList.add('show');b.style.display='inline-flex'}else{p.classList.remove('show');b.style.display='none'}uAct()});
+
+// Principles
+
+// Action plan
+function uAct(){var st=[];st.push(S.wizDone?'Paste your custom instructions into settings':'Set up custom instructions');st.push('Try \u201cAsk me questions\u201d on your next brief');st.push(S.boring?'Ask AI to help with: '+S.boring:'Pick one boring task, hand it to AI');if(S.habits.length>0)st.push(S.habits.length+' habit'+(S.habits.length>1?'s':'')+' activated');var h='';st.forEach(function(s,i){h+='<div class="act-step"><span class="act-n">'+(i+1)+'.</span><span>'+s+'</span></div>'});document.getElementById('actSteps').innerHTML=h}
+
+// Copy
+function cp(btn,ok){btn.classList.add('copied');btn.querySelector('span').textContent='Copied!';setTimeout(function(){btn.classList.remove('copied');btn.querySelector('span').textContent=ok||'Copy prompt'},2000)}
+window.copyP=function(btn,txt){navigator.clipboard.writeText(txt).then(function(){cp(btn)})};
+window.copyWiz=function(){navigator.clipboard.writeText(document.getElementById('wizPrev').textContent).then(function(){cp(document.getElementById('wizCopy'),'Copy instructions')})};
+window.copyBoring=function(){navigator.clipboard.writeText(document.getElementById('boringOut').textContent).then(function(){cp(document.getElementById('boringCopy'))})};
+window.copyGeminiPrompt=function(){navigator.clipboard.writeText(document.getElementById('geminiPrompt').textContent).then(function(){cp(document.getElementById('geminiCopy'))})};
+
+// Blink
+var st=document.createElement('style');st.textContent='@keyframes blink{50%{opacity:0}}';document.head.appendChild(st);
+})();
+</script>
+</body>
+</html>
