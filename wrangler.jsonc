@@ -1,11 +1,5 @@
 {
   "name": "bws-awayday",
   "pages_build_output_dir": ".",
-  "compatibility_date": "2026-03-30",
-  "routes": [
-    {
-      "pattern": "bws-awayday.hco.dev",
-      "custom_domain": true
-    }
-  ]
+  "compatibility_date": "2026-03-30"
 }
